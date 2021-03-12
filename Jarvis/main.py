@@ -90,13 +90,17 @@ if __name__=="__main__":
         query= takecommand().lower()
 
         #logic building for tasks
+
+#open notepad
         if "open notepad" in query:
             npath= "C:\\WINDOWS\\system32\\notepad.exe"
             os.startfile(npath)
-        
+
+#open command prompt        
         elif "open command prompt" in query:
             os.system("start cmd")
 
+#open camera
         elif "open camera"in query:
             cap=cv2.VideoCapture(0)
             while True:
@@ -108,6 +112,7 @@ if __name__=="__main__":
             cap.release()   
             cv2.destroyAllWindows()
 
+#Capture image on webcam
         elif 'take photo' in query:
             cam = cv2.VideoCapture(0)
 
@@ -137,12 +142,14 @@ if __name__=="__main__":
             cam.release()
             cv2.destroyAllWindows()
 
+#play songs
         elif "play music" in query:
             music_dir="D:\\music"
             songs= os.listdir(music_dir)
             rd= random.choice(songs)
             os.startfile(os.path.join(music_dir, rd))
 
+#search anything on wikipedia
         elif "wikipedia" in query:
             speak("searching wikipedia....")
             query= query.replace("wikipedia","")
@@ -151,25 +158,31 @@ if __name__=="__main__":
             speak(results)
             print(results)
 
+#open youtube
         elif "open youtube" in query:
             webbrowser.open("youtube.com")
-        
+
+#open facebook        
         elif "open facebook" in query:
             webbrowser.open("facebook.com")
 
+#search anything on google
         elif "open google" in query:
             speak("ma'am, what should I search on google")
             cm=takecommand().lower()
             speak("here what I found on google")
             webbrowser.open(f"{cm}")
 
+#send message on whatsapp
         elif "send message" in query:
             pywhatkit.sendwhatmsg("+917003486629", "Hello,How Are You",12,34)
 
-        
+
+#playing a particular songs on youtube        
         elif "play songs on youtube" in query:
             pywhatkit.playonyt("Believer")
 
+#Send emails
         elif 'send mail' in query:
             try:
                 speak("What should I say?")
@@ -204,14 +217,19 @@ if __name__=="__main__":
         elif "sleep the system" in query:
             os.system("rund1132.exe powrprof.dll,SetSuspendState 0,1,0")
 
+#switching windows
         elif "swap windows" in query:
             pyautogui.keyDown("alt")
             pyautogui.press("tab")
             time.sleep(1)
             pyautogui.keyUp("alt")
 
+#getting news updates
         elif "tell me news" in query:
             speak("wait ma'am, fetching the news for you")
             news()
+
+             
+
 
         speak("ma'am do you have any other work?")
